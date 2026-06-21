@@ -140,7 +140,7 @@ What it does:
 - **Pick a download folder** and **track quality** (LOW/NORMAL/HIGH/MAX).
 - **Search for an artist** — results show the artist avatar, name and **artist ID**.
 - **Open an artist** to see albums + EPs/singles as a cover grid, each marked as
-  already downloaded (`Đã tải` / `Một phần` / `Chưa tải`).
+  already downloaded (`Downloaded` / `Partial` / `Not downloaded`).
 - **Download** the whole artist (albums or EP & singles) or individual releases,
   with a **progress bar**. Already-downloaded tracks are skipped automatically
   (the CLI's `skip_existing`), so re-running never re-downloads.
