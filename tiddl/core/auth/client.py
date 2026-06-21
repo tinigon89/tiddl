@@ -82,7 +82,10 @@ class AuthClient:
                 "client_id": self.client_id,
                 "refresh_token": refresh_token,
                 "grant_type": "refresh_token",
-                "scope": "r_usr+w_usr+w_sub",
+                # w_sub (write subscription) isn't granted to all clients (e.g. the
+                # PKCE Hi-Res client) and isn't needed for downloading — requesting
+                # it causes a 400 "scopes not allowed". Use the safe subset.
+                "scope": "r_usr+w_usr",
             },
             auth=(self.client_id, self.client_secret),
         )

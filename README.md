@@ -126,6 +126,41 @@ Music
 > [!NOTE]
 > Learn more about [file templating](/docs/templating.md)
 
+## Web UI
+
+A Monochrome-inspired web interface ([`tiddl_web.py`](/tiddl_web.py)) is bundled for
+users who prefer clicking over typing. It reuses the `tiddl` backend for
+search/listing and the `tiddl` CLI for downloading. **No extra dependencies** — it
+uses Python's standard-library `http.server`.
+
+What it does:
+
+- **Log in to Tidal straight from the browser** (device flow), with a live
+  login-status indicator.
+- **Pick a download folder** and **track quality** (LOW/NORMAL/HIGH/MAX).
+- **Search for an artist** — results show the artist avatar, name and **artist ID**.
+- **Open an artist** to see albums + EPs/singles as a cover grid, each marked as
+  already downloaded (`Đã tải` / `Một phần` / `Chưa tải`).
+- **Download** the whole artist (albums or EP & singles) or individual releases,
+  with a **progress bar**. Already-downloaded tracks are skipped automatically
+  (the CLI's `skip_existing`), so re-running never re-downloads.
+
+Run it with your virtual environment's Python, then open
+[http://127.0.0.1:8765](http://127.0.0.1:8765) (it opens automatically):
+
+```bash
+# Windows (PowerShell)
+.venv\Scripts\python.exe tiddl_web.py
+
+# macOS / Linux
+.venv/bin/python tiddl_web.py
+```
+
+> [!NOTE]
+> The "already downloaded" check assumes the default output template
+> `{album.artist}/{album.title}/{item.title}`; if you customize the template the
+> indicator may not match, but downloading still skips existing files correctly.
+
 ## Configuration files
 
 Files of the app are created in your home directory. By default, the app is located at `~/.tiddl`.
